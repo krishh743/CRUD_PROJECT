@@ -1,0 +1,26 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "krishna",
+      "phone": "9327947394",
+      "email": "krishna@gmail.com",
+      "address": "Ghazipur"
+    },
+    {
+      "id": 2,
+      "name": "kumar",
+      "phone": 8638726767,
+      "email": "kk@gmail.com",
+      "address": "Ghazipur"
+    },
+    {
+      "name": "krishna",
+      "email": " kk@gmail.com",
+      "phone": " 878989865",
+      "address": "bng",
+      "contact": " 8",
+      "id": 3
+    }
+  ]
+}
