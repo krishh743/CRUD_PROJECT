@@ -15,8 +15,13 @@ const userAdded = () => ({
   type: types.ADD_USER,
 });
 
-const userEdited=()=>({
-    type:types.GET_USER_EDIT,
+const userEdited = (user: any) => ({
+  type: types.GET_USER_EDIT,
+  payload: user,
+});
+
+const userUpdated=()=>({
+  type:types.GET_USER_UPDATED,
 })
 
 export const loadUsers = () => {
@@ -31,7 +36,6 @@ export const loadUsers = () => {
       .catch((error) => console.log(error));
   };
 };
-
 //delete data with the help of redux
 export const deleteUser = (id: any) => {
   return function (dispatch: any) {
@@ -61,18 +65,29 @@ export const addUser = (user: any) => {
   };
 };
 
-
-
-export const editUser = (user: any) => {
-    return function (dispatch: any) {
-      console.log(process.env.REACT_APP_API);
-      axios
-        .post(`${process.env.REACT_APP_API}`, user)
-        .then((resp) => {
-          console.log("resp", resp);
-          dispatch(userEdited());
-          // dispatch(loadUsers())
-        })
-        .catch((error) => console.log(error));
-    };
+export const editUser = (id: any) => {
+  return function (dispatch: any) {
+    // console.log(process.env.REACT_APP_API);
+    axios
+      .get(`${process.env.REACT_APP_API}/${id}`)
+      .then((resp) => {
+        console.log("resp", resp);
+        dispatch(userEdited(resp.data));
+        // dispatch(loadUsers())
+      })
+      .catch((error) => console.log(error));
   };
+};
+export const userUpdate = (id: any, user : any) => {
+  return function (dispatch: any) {
+    // console.log(process.env.REACT_APP_API);
+    axios
+      .put(`${process.env.REACT_APP_API}/${id}`, user)
+      .then((resp) => {
+        console.log("resp", resp);
+        dispatch(userUpdated());
+        // dispatch(loadUsers())
+      })
+      .catch((error) => console.log(error));
+  };
+};

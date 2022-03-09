@@ -24,6 +24,17 @@ case types.USER_DELETE:
       ...state,
       loading: false,
     }
+    case types.GET_USER_EDIT:
+      return {
+        ...state,
+        user:action.payload,
+        loading: false,
+      }
+      case types.GET_USER_UPDATED:
+        return {
+          ...state,
+          loading: false,
+        }
     default:
       return state;
   }
